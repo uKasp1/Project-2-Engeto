@@ -1,0 +1,4 @@
+{
+    "editor.defaultFoldingRangeProvider": "mikoz.black-py",
+    "editor.formatOnSave": true
+}
