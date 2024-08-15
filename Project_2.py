@@ -54,7 +54,7 @@ def main_code():
                 print("-"*50, f"Congratulations, Player with symbol {symbol} WON!!!!", "-"*50, sep="\n")
                 new_game()
 
-        if (board[0][0] == board[1][1] == board[2][2] == symbol or board[0][2] == board[1][1] == board[2][0] == symbol ):
+        if (board[0][0] == board[1][1] == board[2][2] == symbol or board[0][2] == board[1][1] == board[2][0] == symbol):
                 print("-"*50, f"Congratulations, Player with symbol {symbol} WON!!!!", "-"*50, sep="\n")
                 new_game()
 
