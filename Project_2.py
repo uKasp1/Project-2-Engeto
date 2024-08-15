@@ -64,12 +64,10 @@ def main_code():
         Check for matching symbol of each row, column and diagonal.
         If there is a winner it goes to new_game()
         """
-        for rows, columns in zip(
-            range(2), range(2)
-        ):  # Check matching symbol for each rows and columns
-            if (
-                board[rows][0] == board[rows][1] == board[rows][2] == symbol
-            ):  # Check rows
+        # Check matching symbol for each rows and columns
+        for rows, columns in zip(range(2), range(2)):
+            #  Check
+            if board[rows][0] == board[rows][1] == board[rows][2] == symbol:
                 print(
                     "-" * 50,
                     f"Congratulations, Player with symbol {symbol} WON!!!!",
@@ -77,9 +75,7 @@ def main_code():
                     sep="\n",
                 )
                 new_game()
-            if (
-                board[0][columns] == board[1][columns] == board[2][columns] == symbol
-            ):  # Check columns
+            if board[0][columns] == board[1][columns] == board[2][columns] == symbol:
                 print(
                     "-" * 50,
                     f"Congratulations, Player with symbol {symbol} WON!!!!",
@@ -89,12 +85,9 @@ def main_code():
                 new_game()
 
         if (
-            board[0][0]
-            == board[1][1]
-            == board[2][2]
-            == symbol  # Check symbols diagonaly
+            board[0][0] == board[1][1] == board[2][2] == symbol
             or board[0][2] == board[1][1] == board[2][0] == symbol
-        ):
+        ):  # Check symbols diagonaly
             print(
                 "-" * 50,
                 f"Congratulations, Player with symbol {symbol} WON!!!!",
