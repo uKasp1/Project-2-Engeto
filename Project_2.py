@@ -7,7 +7,9 @@ discord: jankasparek0720
 
 
 def main_code():
+    # List of lists for creation of board 
     board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+    # Board numbers for filling the board by symbols
     board_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     def gameboard(rows: int = 3, colums: int = 3):
@@ -38,7 +40,8 @@ def main_code():
                 else:
                     symbol_2 = "X"
                 print(f"Player 1 choose symbol {symbol_1}, Player 2 has {symbol_2}")
-                index = False
+                # dont need to continue the loop index = False
+                index = False 
             else:
                 print("This is not a valid input, try again:")
         return symbol_1, symbol_2
