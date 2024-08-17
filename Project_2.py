@@ -7,7 +7,7 @@ discord: jankasparek0720
 
 
 def main_code():
-    # List of lists for creation of board 
+    # List of lists for creation of board
     board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
     # Board numbers for filling the board by symbols
     board_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -26,14 +26,17 @@ def main_code():
     def choose_symbol(index: bool = True):
         """
         Player chooses a game symbol X or O
+
+        Returns:
+            str: symbol_1, symbol_2 are player symbols
         """
         while index:
             print("-" * 42)
             # Pick a symbol
-            player_symbol = input(str("Chose a player symbol [X, O]: "))  
+            player_symbol = input(str("Chose a player symbol [X, O]: "))
             print("-" * 42)
             # Compare input with available symbols
-            if (player_symbol.upper() == "X" or player_symbol.upper() == "O"):  
+            if player_symbol.upper() == "X" or player_symbol.upper() == "O":
                 symbol_1 = player_symbol.upper()
                 if symbol_1 == "X":
                     symbol_2 = "O"
@@ -41,15 +44,19 @@ def main_code():
                     symbol_2 = "X"
                 print(f"Player 1 choose symbol {symbol_1}, Player 2 has {symbol_2}")
                 # dont need to continue the loop index = False
-                index = False 
+                index = False
             else:
                 print("This is not a valid input, try again:")
         return symbol_1, symbol_2
 
-    def modify_board(number, symbol):
+    def modify_board(number: int, symbol: str):
         """
         Board modifier
         Modulo % is used for distinction between rows of the board
+
+        Args:
+            number (int): board number for symbol field input
+            symbol (str): symbol to add to field
         """
         number -= 1
         if number in range(0, 3):  # 1st row of the board
@@ -66,9 +73,9 @@ def main_code():
         If there is a winner it goes to new_game()
         """
         # Check matching symbol for each rows and columns
-        for rows, columns in zip(range(2), range(2)):  
+        for rows, columns in zip(range(2), range(2)):
             #  Check rows
-            if (board[rows][0] == board[rows][1] == board[rows][2] == symbol): 
+            if board[rows][0] == board[rows][1] == board[rows][2] == symbol:
                 print(
                     "-" * 50,
                     f"Congratulations, Player with symbol {symbol} WON!!!!",
@@ -78,7 +85,7 @@ def main_code():
                 new_game()
 
             #  Check columns
-            if (board[0][columns] == board[1][columns] == board[2][columns] == symbol): 
+            if board[0][columns] == board[1][columns] == board[2][columns] == symbol:
                 print(
                     "-" * 50,
                     f"Congratulations, Player with symbol {symbol} WON!!!!",
@@ -86,10 +93,12 @@ def main_code():
                     sep="\n",
                 )
                 new_game()
-                
+
         #  Check symbols diagonaly
-        if (board[0][0] == board[1][1] == board[2][2] == symbol 
-            or board[0][2] == board[1][1] == board[2][0] == symbol): 
+        if (
+            board[0][0] == board[1][1] == board[2][2] == symbol
+            or board[0][2] == board[1][1] == board[2][0] == symbol
+        ):
             print(
                 "-" * 50,
                 f"Congratulations, Player with symbol {symbol} WON!!!!",
@@ -117,7 +126,7 @@ def main_code():
         move_counter = 0
         while True:
             # Switching between players
-            current_symbol = (symbol_1 if move_counter % 2 == 0 else symbol_2)  
+            current_symbol = symbol_1 if move_counter % 2 == 0 else symbol_2
             print("-" * 50)
             move_input = input(
                 f"Player {current_symbol}. Please enter your move number (1-9):"
@@ -125,12 +134,12 @@ def main_code():
             print("-" * 50)
 
             # If input is not a digit
-            if not move_input.isdigit():  
+            if not move_input.isdigit():
                 print(f"This is not a digit")
             else:
                 move_input = int(move_input)
-                 # If input is in range but not available
-                if (move_input in range(1, 10) and move_input not in board_numbers): 
+                # If input is in range but not available
+                if move_input in range(1, 10) and move_input not in board_numbers:
                     print("This playing field is already occupied")
                 elif move_input not in board_numbers:  # Input not in range
                     print("This number is not in valid range")
@@ -139,7 +148,7 @@ def main_code():
                     modify_board(move_input, current_symbol)
                     check_winner(current_symbol)
                     # Add one for player changover in next iteration
-                    move_counter += 1  
+                    move_counter += 1
 
     def new_game():
         """
