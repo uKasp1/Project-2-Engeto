@@ -43,7 +43,7 @@ def main_code():
                 else:
                     symbol_2 = "X"
                 print(f"Player 1 choose symbol {symbol_1}, Player 2 has {symbol_2}")
-                # dont need to continue the loop index = False
+                # Dont need to continue the loop index = False
                 index = False
             else:
                 print("This is not a valid input, try again:")
@@ -53,17 +53,23 @@ def main_code():
         """
         Board modifier
         Modulo % is used for distinction between rows of the board
+        Each row is [0, 1, 2] but numbers inputs for second row are 3, 4, 5,
+        After using modulo % 3 we get  3 == 0, 4 == 1, 5 == 2
 
         Args:
             number (int): board number for symbol field input
             symbol (str): symbol to add to field
         """
+        # Number -1 coz board index starts from 0
         number -= 1
-        if number in range(0, 3):  # 1st row of the board
+        # 1st row of the board
+        if number in range(0, 3):
             board[0][number] = symbol
-        elif number in range(3, 6):  # 2nd row
+        # 2nd row
+        elif number in range(3, 6):
             board[1][number % 3] = symbol
-        elif number in range(6, 10):  # 3rd row
+        # 3rd row
+        elif number in range(6, 10):
             board[2][number % 6] = symbol
         gameboard()
 
@@ -73,7 +79,7 @@ def main_code():
         If there is a winner it goes to new_game()
         """
         # Check matching symbol for each rows and columns
-        for rows, columns in zip(range(2), range(2)):
+        for rows, columns in zip(range(3), range(3)):
             #  Check rows
             if board[rows][0] == board[rows][1] == board[rows][2] == symbol:
                 print(
@@ -101,7 +107,6 @@ def main_code():
         ):
             print(
                 "-" * 50,
-                f"Congratulations, Player with symbol {symbol} WON!!!!",
                 "-" * 50,
                 sep="\n",
             )
